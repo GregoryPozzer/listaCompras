@@ -13,16 +13,21 @@
     <h1 class="text-center mb-4">🛒 Lista de Compras</h1>
 
     <div class="row mb-3 g-2">
-      <div class="col-md-6">
+      <div class="col-md-5">
         <input type="text" id="itemInput" class="form-control" placeholder="Digite o item">
       </div>
       <div class="col-md-2">
         <input type="number" id="quantidadeInput" class="form-control" placeholder="Qtd" min="1" value="1">
       </div>
-      <div class="col-md-4">
+      <div class="col-md-2">
+        <input type="number" id="precoInput" class="form-control" placeholder="R$" min="0" step="0.01">
+      </div>
+      <div class="col-md-3">
         <button id="addButton" class="btn btn-primary w-100">Adicionar</button>
       </div>
     </div>
+    
+    
 
     <ul id="shoppingList" class="list-group"></ul>
   </div>
