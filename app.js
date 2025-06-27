@@ -1,4 +1,5 @@
 // DOM
+console.log("app.js carregado")
 console.log("✅ app.js versão nova carregada");
 const inputItem = document.getElementById('itemInput');
 const inputQtd = document.getElementById('quantidadeInput');
