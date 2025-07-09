@@ -191,6 +191,36 @@ window.addEventListener('keydown', (event) => {
     }
   }
 });
+const toggleBackgroundBtn = document.getElementById('toggleBackgroundBtn');
+
+// Função para aplicar o modo baseado na preferência ou padrão
+function aplicarModo(modo) {
+  if (modo === 'dark') {
+    document.body.classList.add('dark-mode');
+    document.body.classList.remove('light-mode');
+    toggleBackgroundBtn.textContent = '☀️ Modo Claro';
+  } else {
+    document.body.classList.add('light-mode');
+    document.body.classList.remove('dark-mode');
+    toggleBackgroundBtn.textContent = '🌙 Modo Escuro';
+  }
+  localStorage.setItem('modo', modo);
+}
+
+// Detecta o modo salvo no localStorage ou usa claro como padrão
+const modoSalvo = localStorage.getItem('modo') || 'light';
+aplicarModo(modoSalvo);
+
+// Evento do botão para alternar os modos
+toggleBackgroundBtn.addEventListener('click', () => {
+  const modoAtual = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+  if (modoAtual === 'dark') {
+    aplicarModo('light');
+  } else {
+    aplicarModo('dark');
+  }
+});
+
 
 // PWA: registra o service worker (se houver)
 if ('serviceWorker' in navigator) {
