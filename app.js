@@ -13,6 +13,7 @@ const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal')
 const spanAdicionados = document.getElementById('contadorAdicionados');
 const spanRemovidos = document.getElementById('contadorRemovidos');
 
+
 let pendingRemovalLi = null;  // Item aguardando confirmação de remoção
 
 // Inicializa os contadores a partir do localStorage ou zero
@@ -26,6 +27,27 @@ function atualizarContadores() {
   localStorage.setItem('contadorAdicionados', contadorAdicionados);
   localStorage.setItem('contadorRemovidos', contadorRemovidos);
 }
+// Botões de incremento e decremento manual dos contadores
+document.getElementById('incrementarAdicionados').addEventListener('click', () => {
+  contadorAdicionados++;
+  atualizarContadores();
+});
+
+document.getElementById('decrementarAdicionados').addEventListener('click', () => {
+  if (contadorAdicionados > 0) contadorAdicionados--;
+  atualizarContadores();
+});
+
+document.getElementById('incrementarRemovidos').addEventListener('click', () => {
+  contadorRemovidos++;
+  atualizarContadores();
+});
+
+document.getElementById('decrementarRemovidos').addEventListener('click', () => {
+  if (contadorRemovidos > 0) contadorRemovidos--;
+  atualizarContadores();
+});
+
 
 // Função para salvar a lista atual no localStorage
 function salvarLista() {
@@ -163,6 +185,10 @@ clearButton.addEventListener('click', () => {
   inputPreco.value = '';
   inputItem.focus();
 });
+  togglteBackgroundBtn.addEventListener('click', () => {
+  
+});
+  
 
 // Botão adicionar
 addButton.addEventListener('click', adicionarItem);
@@ -193,6 +219,7 @@ window.addEventListener('keydown', (event) => {
 });
 const toggleBackgroundBtn = document.getElementById('toggleBackgroundBtn');
 
+
 // Função para aplicar o modo baseado na preferência ou padrão
 function aplicarModo(modo) {
   if (modo === 'dark') {
@@ -207,6 +234,8 @@ function aplicarModo(modo) {
   localStorage.setItem('modo', modo);
 }
 
+
+
 // Detecta o modo salvo no localStorage ou usa claro como padrão
 const modoSalvo = localStorage.getItem('modo') || 'light';
 aplicarModo(modoSalvo);
@@ -220,6 +249,15 @@ toggleBackgroundBtn.addEventListener('click', () => {
     aplicarModo('dark');
   }
 });
+
+//toggleBackgroundBtn.addEventListener('click', () => {
+//  const modoAtual = document.body.classList.contains('purple-mode') ? 'dark' : 'light';
+//  if (modoAtual === 'dark') {
+//    aplicarModo('light');
+//  } else {
+//    aplicarModo('dark');
+//  }
+//});
 
 
 // PWA: registra o service worker (se houver)
